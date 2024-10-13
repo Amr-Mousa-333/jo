@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std ;
+int main (){
+    unsigned short int x , setmask , restmask , afterset = 0x0 , afteset = 0x0  ;
+ cin >> hex >>   x ;
+ setmask = 0xefad ;
+ restmask = 0xf6d ;
+ //using or set
+   afteset = x | setmask ;
+   cout << "after set 1,7 " << hex << afteset <<endl;
+    //using and rset
+    afterset = x & restmask ;
+    cout << "after rset 2,5,8 " << hex << afterset <<endl;
+}

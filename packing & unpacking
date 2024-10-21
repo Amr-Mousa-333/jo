@@ -1,0 +1,58 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    unsigned char x[4] = {0xf3, 0xc3, 0xa, 0x8}; // أربعة أعداد في صورة بايتات
+
+    unsigned int z = 0; // متغير لحفظ العدد بعد التعبئة
+
+    cout << "numbers before packing: " << endl;
+    for (int i = 0; i < 4; i++) {
+        cout << hex << (int)x[i] << endl;
+    }
+
+    // عملية التعبئة
+    for (int i = 0; i < 4; i++) {
+        z = z << 8;  // تحريك البتات يسارًا 8 مرات لإفساح مكان للبايت الجديد
+        z = z | x[i]; // إضافة البايت الحالي إلى القيمة الحالية لـ z
+    }
+
+    cout << "number after packing: " << endl;
+    cout << hex << z << endl;
+
+    int end;
+    cin >> end;
+    return 0;
+}
+
+
+//////////////////////////////////////////////////
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    unsigned char x[4];
+    unsigned int z = 0xf3c30a08;
+    unsigned int mask = 0xff;
+
+    cout << "number before unpacking: " << endl;
+    cout << hex << z << endl;
+
+    for (int i = 3; i >= 0; i--) 
+    {
+        x[i] = z & mask;
+        z >>= 8;
+    }
+
+    cout << "numbers after unpacking: " << endl;
+    for (int i = 0; i < 4; i++) 
+    {
+        cout << (int)x[i] << endl;
+    }
+
+   
+    return 0;
+}
